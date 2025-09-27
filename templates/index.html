@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<html>
+<head>
+	<!-- Valilehden otsikko -->
+    <title>TKT20010</title>
+</head>
+<body>
+	<!-- Dokumentin otsikko -->
+    <h1>Tervetuloa tunnistamaan käsin kirjoitettuja numeroita kNN-algoritmillä!</h1>
+	<b><span>Valitse etäisyysmitta:</span><b>
+	<p>
+	<!-- POST-menetelmalla turvallisesti -->
+	<form method="POST" enctype="multipart/form-data">
+		<div>
+			<!-- Etaisyysmitan valinta -->
+			<label><input type="checkbox" name="mitta1"> Euklidinen</label>
+			<label><input type="checkbox" name="mitta2"> d22</label>
+			<label><input type="checkbox" name="mitta3"> d23</label>
+			<label><input type="checkbox" name="mitta4"> d23 ilman keskiarvoa</label>
+		</div>
+		<p>
+		<!-- Kuva tiedoston valinta -->
+		<input type="file" name="tiedosto" accept="image/png, image/jpeg">
+	</form>
+
+	<script>
+		<!-- Automaattinen lomakkeen lahetys kun kuva tiedosto on valinta -->
+		document.querySelector('input[type="file"]').addEventListener('change', function () {
+			this.form.submit(); });
+	</script>
+
+	<!-- Tulosten esitys -->
+	{% if tiedosto_nimi %}
+		<h2>Tunnistettava numero:</h2>
+		<img src="{{ url_for('uploaded_file', tiedosto_nimi=tiedosto_nimi) }}" width="300">
+	{% endif %}
+
+	{% if tulos is not none %}
+		<h3>Tunnistuksen tulos etäisyysmitalla: {{ mitta }}, on {{ tulos }}</h3>
+	{% endif %}
+</body>
+</html>
+{% endblock %}
