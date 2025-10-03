@@ -1,11 +1,11 @@
 """
 KNN moduli     
 """
+import random
 #Matematiikka
 import numpy as np
 #MNIST tietokanta
 import tensorflow as tf
-import random
 
 class KNN:
     """
@@ -25,7 +25,7 @@ class KNN:
         #Skaalataan pikseleiden arvot valille 0 - 1
         self.x_koulutus=self.x_koulutus/255.0
         #Pikseleiden arvo jo 0 tai 1, mustavalkoinen
-        self.x_koulutus = (self.x_koulutus > 0.5).astype(np.float32)
+        self.x_koulutus = (self.x_koulutus > 0.25).astype(np.float32)
         #Pikseleiden koordinaatit
         self.x_koulutus_coord = [np.argwhere(img) for img in self.x_koulutus]
 #        self.koulutus_random = np.random.randint(0,60000, size=self.koulutuskuva_nr)
@@ -35,7 +35,7 @@ class KNN:
             numerot[self.y_koulutus[i]].append(i)
         self.koulutus_random=[]
         for i in range(10):
-            self.koulutus_random=self.koulutus_random+random.sample(numerot[i], int(self.koulutuskuva_nr/10))
+            self.koulutus_random += random.sample(numerot[i], int(self.koulutuskuva_nr/10))
         random.shuffle(self.koulutus_random)
     def tarkasta(self,nr_t):
         """
@@ -73,7 +73,9 @@ class KNN:
                         loytyi = True
                         break
                 if not loytyi:
-                    min_etaisyys = min(( (y_x - xy[0])**2 + (x_x - xy[1])**2 ) for xy in koulutus_coord)
+                    min_etaisyys = min(
+                    ( (y_x - xy[0])**2 + (x_x - xy[1])**2 ) for xy in koulutus_coord
+                    )
                     etaisyys_lista.append(min_etaisyys)
             kuvien_etaisyydet.append([(sum(etaisyys_lista))**0.5, i])
         return kuvien_etaisyydet
