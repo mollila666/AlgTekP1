@@ -41,29 +41,21 @@ def index():
         #Euklidinen etaisyysmitta
         if mitta1:
             mitta='euklidinen'
-            malli=KNN(etaisyys='euklidinen', nr_k=7, koulutuskuva_nr=4000)
-            tulos = malli.tunnista(kuva)
         #d22 etaisyysmitta viitteen (Dubuisson & Jain, 1994) mukaisesti
         elif mitta2:
             mitta='d22'
-            malli=KNN(etaisyys='d22', nr_k=7, koulutuskuva_nr=4000)
-            tulos = malli.tunnista(kuva)
         #d23 etaisyysmitta viitteen (Dubuisson & Jain, 1994) mukaisesti
         elif mitta3:
             mitta='d23'
-            malli=KNN(etaisyys='d23', nr_k=7, koulutuskuva_nr=4000)
-            tulos = malli.tunnista(kuva)
         #d23 etaisyysmitta viitteen (Dubuisson & Jain, 1994) mukaisesti,
         #ilman keskiarvoistusta etaisyydessa d6
         elif mitta4:
             mitta='d23 ilman keskiarvoistusta'
-            malli=KNN(etaisyys='d23_summa', nr_k=7, koulutuskuva_nr=4000)
-            tulos = malli.tunnista(kuva)
         #Euklidinen etaisyysmitta, mikali etaisyysmittaa ei valittu
         else:
             mitta='euklidinen'
-            malli=KNN(etaisyys='euklidinen', nr_k=7, koulutuskuva_nr=4000)
-            tulos = malli.tunnista(kuva)
+        malli=KNN(etaisyys=mitta, nr_k=7, koulutuskuva_nr=4000)
+        tulos = malli.tunnista(kuva)
         return render_template('index.html', tiedosto_nimi=tiedosto_nimi, mitta=mitta, tulos=tulos)
     return render_template('index.html', tiedosto_nimi=None, tulos=None)
 
