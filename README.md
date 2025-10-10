@@ -7,6 +7,7 @@
 - [Viikkoraportti 3 ](/Palautukset/Viikko3/Viikkoraportti_3.pdf)
 - [Viikkoraportti 4 ](/Palautukset/Viikko4/Viikkoraportti_4.pdf)
 - [Viikkoraportti 5 ](/Palautukset/Viikko5/Viikkoraportti_5.pdf)
+- [Viikkoraportti 6 ](/Palautukset/Viikko6/Viikkoraportti_6.pdf)
 - [Testausdokumentti ](/Palautukset/Testausdokumentti/Testausdokumentti.pdf)
 - [Toteutusdokumentti ](/Palautukset/Toteutusdokumentti/Toteutusdokumentti.pdf)
 - [Kayttoohje ](/Palautukset/Kayttoohje/Kayttoohje.pdf)
