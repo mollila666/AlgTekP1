@@ -50,7 +50,7 @@ def index():
         #d23 etaisyysmitta viitteen (Dubuisson & Jain, 1994) mukaisesti,
         #ilman keskiarvoistusta etaisyydessa d6
         elif mitta4:
-            mitta='d23 ilman keskiarvoistusta'
+            mitta='d23_summa'
         #Euklidinen etaisyysmitta, mikali etaisyysmittaa ei valittu
         else:
             mitta='euklidinen'
